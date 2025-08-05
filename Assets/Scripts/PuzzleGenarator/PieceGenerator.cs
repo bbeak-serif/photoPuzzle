@@ -17,31 +17,13 @@ public class PieceGenerator : MonoBehaviour {
 
     private void Awake() {
         load = gameObject.AddComponent<LoadGallery>(); 
-        folderPath = Application.persistentDataPath + "/Image";
+        folderPath = Application.persistentDataPath + "/SourceImage";
 
         string imageName = "Origin";
         string imagePath = Path.Combine(folderPath, imageName + ".png");
         if (!File.Exists(imagePath)) {
             Debug.LogError($"이미지 파일이 존재하지 않습니다: {imagePath}");
-            return;
-        }
-        sourceImage = NativeGallery.LoadImageAtPath(imagePath);
-        sourceUV = new Material(Shader.Find("Unlit/Texture"));
-        sourceUV.mainTexture = sourceImage;
-        sourceUV.SetFloat("_Mode", 0);
-        if (sourceUV.mainTexture == null) {
-            Debug.LogError("머티리얼 텍스처 할당 실패");
-        }
-    }
-
-    public void OnImageHasChanged() {
-        folderPath = Application.persistentDataPath + "/Image";
-
-        string imageName = "Origin";
-        string imagePath = Path.Combine(folderPath, imageName + ".png");
-        if (!File.Exists(imagePath)) {
-            Debug.LogError($"이미지 파일이 존재하지 않습니다: {imagePath}");
-            return;
+            load.OnClickButton();
         }
         sourceImage = NativeGallery.LoadImageAtPath(imagePath);
         sourceUV = new Material(Shader.Find("Unlit/Texture"));
@@ -78,9 +60,6 @@ public class PieceGenerator : MonoBehaviour {
 
         meshFilter.mesh = mesh;
         meshRenderer.material = sourceUV;
-
-        obj.AddComponent<PieceData>().CorrectPosition = position;
-        
 
         return obj;
     }

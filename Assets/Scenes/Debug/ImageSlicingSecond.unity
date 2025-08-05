@@ -176,8 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8b8451a16655748b2baf4679cd0699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PuzzleGenerator
-  puzzleSize: 10
-  isAvailableFlat: 1
+  puzzleSize: 4
+  isAvailableFlat: 0
 --- !u!1 &1904614090
 GameObject:
   m_ObjectHideFlags: 0
