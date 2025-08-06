@@ -1,29 +1,27 @@
 using System.Collections.Generic;
-
-
+using System;
 
 [System.Serializable]
 public class PuzzleInitData {
     public int puzzleSize;
-    public List<List<int>> horizontalSide = new List<List<int>>();
-    public List<List<int>> verticalSide = new List<List<int>>();
+    public int[] flattenHoriziontalSide;
+    public int[] flattenVerticalSide;
 
-    public PuzzleInitData(int size, int[,] horizontal, int[,] vertical) {
+    public PuzzleInitData(int size, int[,] horizontalSide, int[,] verticalSide) {
         puzzleSize = size;
-        for (int i = 0; i < horizontal.GetLength(0); i++) {
-            List<int> row = new List<int>();
-            for (int j = 0; j < horizontal.GetLength(1); j++) {
-                row.Add(horizontal[i, j]);
-            }
-            horizontalSide.Add(row);
+
+        flattenHoriziontalSide = new int[(size + 1) * size];
+        flattenVerticalSide = new int[size * (size + 1)];
+        int i = 0;
+        foreach(int inner in horizontalSide) {
+            flattenHoriziontalSide[i] = inner;
+            i++;
         }
 
-        for (int i = 0; i < vertical.GetLength(0); i++) {
-            List<int> row = new List<int>();
-            for (int j = 0; j < vertical.GetLength(1); j++) {
-                row.Add(vertical[i, j]);
-            }
-            verticalSide.Add(row);
+        i = 0;
+        foreach(int inner in verticalSide) {
+            flattenVerticalSide[i] = inner;
+            i++;
         }
     }
 }

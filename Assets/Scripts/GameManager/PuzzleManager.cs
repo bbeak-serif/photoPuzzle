@@ -13,6 +13,6 @@ public class PuzzleManager : MonoBehaviour
         puzzleSize = GameManager.Instance.puzzleSize;
 
         generator.InitializePuzzleData(puzzleSize);
-        generator.GeneratePuzzles();
+        generator.GeneratePuzzlesData();
     }
 }

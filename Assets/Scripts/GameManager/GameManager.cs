@@ -23,11 +23,9 @@ public class GameManager : MonoBehaviour {
     }
 
     public void OnStartGame(int puzzleSize) {
-        Debug.Log(Application.persistentDataPath + "/SourceImage");
         if (!Directory.Exists(Application.persistentDataPath + "/SourceImage")) return;
         this.puzzleSize = puzzleSize;
         SceneManager.LoadScene(1);
-        
     }
 }
 

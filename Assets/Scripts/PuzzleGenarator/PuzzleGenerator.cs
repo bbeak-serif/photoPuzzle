@@ -24,8 +24,6 @@ public class PuzzleGenerator : MonoBehaviour {
         verticalSide = new int[puzzleSize, puzzleSize + 1];
         puzzleObject = new GameObject[puzzleSize, puzzleSize];
         pieceGenerator.SetPuzzleSize(puzzleSize);
-
-        saveData = new PuzzleInitData(puzzleSize, horizontalSide, verticalSide);
     }
 
     public void LoadDataFromJson() {
@@ -37,12 +35,14 @@ public class PuzzleGenerator : MonoBehaviour {
     }
 
     public void SaveDataToJson() {
+        saveData = new PuzzleInitData(_puzzleSize, horizontalSide, verticalSide);
+
         string jsonData = JsonUtility.ToJson(saveData);
         string path = Path.Combine(Application.persistentDataPath, "puzzleInit.json");
         File.WriteAllText(path, jsonData);
     }
 
-    public void GeneratePuzzles() {
+    public void GeneratePuzzlesData() {
         for (int i = 0; i <= _puzzleSize; i++) {
             for (int j = 0; j < _puzzleSize; j++) {
                 if(i == 0 || i == _puzzleSize) {
@@ -63,26 +63,25 @@ public class PuzzleGenerator : MonoBehaviour {
             }
         }
 
+        SaveDataToJson();
+    }
+
+    public void GeneratePuzzleObj() {
         for (int i = 0; i < _puzzleSize; i++) {
             for (int j = 0; j < _puzzleSize; j++) {
                 //int bottomType, int leftType, int topType, int rightType
-                if (i == 0 && j == 0){
+                if (i == 0 && j == 0) {
                     puzzleObject[i, j] = pieceGenerator.GeneratePieceMesh(verticalSide[i, j + 1], horizontalSide[i, j], verticalSide[i, j], horizontalSide[i + 1, j], new Vector2(i, j));
-                } else if(i != 0 && j == 0) {
+                } else if (i != 0 && j == 0) {
                     puzzleObject[i, j] = pieceGenerator.GeneratePieceMesh(verticalSide[i, j + 1], (horizontalSide[i, j] == 0) ? 0 : 3 - horizontalSide[i, j], verticalSide[i, j], horizontalSide[i + 1, j], new Vector2(i, j));
-                } else if(i == 0 && j != 0) {
-                     puzzleObject[i, j] = pieceGenerator.GeneratePieceMesh(verticalSide[i, j + 1], horizontalSide[i, j], (verticalSide[i, j] == 0) ? 0 : 3 - verticalSide[i, j], horizontalSide[i + 1, j], new Vector2(i, j));
+                } else if (i == 0 && j != 0) {
+                    puzzleObject[i, j] = pieceGenerator.GeneratePieceMesh(verticalSide[i, j + 1], horizontalSide[i, j], (verticalSide[i, j] == 0) ? 0 : 3 - verticalSide[i, j], horizontalSide[i + 1, j], new Vector2(i, j));
                 } else {
                     puzzleObject[i, j] = pieceGenerator.GeneratePieceMesh(verticalSide[i, j + 1], (horizontalSide[i, j] == 0) ? 0 : 3 - horizontalSide[i, j], (verticalSide[i, j] == 0) ? 0 : 3 - verticalSide[i, j], horizontalSide[i + 1, j], new Vector2(i, j));
                 }
             }
         }
 
-        SaveDataToJson();
-        GeneratePuzzleObj();
-    }
-
-    private void GeneratePuzzleObj() {
         for (int i = 0; i < _puzzleSize; i++) {
             for (int j = 0; j < _puzzleSize; j++) {
                 GameObject obj = puzzleObject[i, j];
