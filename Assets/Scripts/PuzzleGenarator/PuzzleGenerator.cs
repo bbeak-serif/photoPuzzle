@@ -24,6 +24,7 @@ public class PuzzleGenerator : MonoBehaviour {
         verticalSide = new int[puzzleSize, puzzleSize + 1];
         puzzleObject = new GameObject[puzzleSize, puzzleSize];
         pieceGenerator.SetPuzzleSize(puzzleSize);
+        saveData = new(puzzleSize, horizontalSide, verticalSide);
     }
 
     public void LoadDataFromJson() {
@@ -31,6 +32,12 @@ public class PuzzleGenerator : MonoBehaviour {
         if (File.Exists(path)) {
             string jsonData = File.ReadAllText(path);
             JsonUtility.FromJsonOverwrite(jsonData, saveData);
+            
+            _puzzleSize = saveData.puzzleSize;
+            horizontalSide = saveData.RestoreHorizontalData();
+            verticalSide = saveData.RestoreVerticalData();
+        } else {
+            GeneratePuzzlesData();
         }
     }
 
@@ -66,7 +73,7 @@ public class PuzzleGenerator : MonoBehaviour {
         SaveDataToJson();
     }
 
-    public void GeneratePuzzleObj() {
+    public GameObject[,] GeneratePuzzleObj() {
         for (int i = 0; i < _puzzleSize; i++) {
             for (int j = 0; j < _puzzleSize; j++) {
                 //int bottomType, int leftType, int topType, int rightType
@@ -82,13 +89,14 @@ public class PuzzleGenerator : MonoBehaviour {
             }
         }
 
-        for (int i = 0; i < _puzzleSize; i++) {
+        /*for (int i = 0; i < _puzzleSize; i++) {
             for (int j = 0; j < _puzzleSize; j++) {
                 GameObject obj = puzzleObject[i, j];
                 obj.transform.position = new Vector3(i, -j, 0);
                 obj.transform.localScale = new Vector3(0.9f, 0.9f, 0);
                 obj.name = "piece" + i + ", " + j;
             }
-        }
+        }*/
+        return puzzleObject;
     }
 }

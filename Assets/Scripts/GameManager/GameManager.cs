@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
         }
     }
     public int puzzleSize;
+    public bool isNewGame;
 
     private void Awake() {
         if (instance == null) {
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour {
     public void OnStartGame(int puzzleSize) {
         if (!Directory.Exists(Application.persistentDataPath + "/SourceImage")) return;
         this.puzzleSize = puzzleSize;
+        this.isNewGame = true;
         SceneManager.LoadScene(1);
     }
 }

@@ -24,4 +24,30 @@ public class PuzzleInitData {
             i++;
         }
     }
+
+    public int[,] RestoreHorizontalData() {
+        int[,] returns = new int[puzzleSize + 1, puzzleSize];
+        int index = 0;
+
+        for (int i = 0; i <= puzzleSize; i++) {
+            for (int j = 0; j < puzzleSize; j++) {
+                returns[i, j] = flattenHoriziontalSide[index];
+                index++;
+            }
+        }
+        return returns;
+    }
+
+    public int[,] RestoreVerticalData() {
+        int[,] returns = new int[puzzleSize, puzzleSize + 1];
+        int index = 0;
+
+        for (int i = 0; i < puzzleSize; i++) {
+            for (int j = 0; j <= puzzleSize; j++) {
+                returns[i, j] = flattenVerticalSide[index];
+                index++;
+            }
+        }
+        return returns;
+    }
 }

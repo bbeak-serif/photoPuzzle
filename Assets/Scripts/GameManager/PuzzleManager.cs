@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PuzzleManager : MonoBehaviour
 {
+    [SerializeField] private PieceInventory inventory;
     PuzzleGenerator generator;
     int puzzleSize;
 
@@ -10,9 +11,16 @@ public class PuzzleManager : MonoBehaviour
     }
 
     private void Start() {
-        puzzleSize = GameManager.Instance.puzzleSize;
+        if (GameManager.Instance.isNewGame) {
+            puzzleSize = GameManager.Instance.puzzleSize;
 
-        generator.InitializePuzzleData(puzzleSize);
-        generator.GeneratePuzzlesData();
+            generator.InitializePuzzleData(puzzleSize);
+            inventory.InitializePuzzleSize(puzzleSize);
+            generator.GeneratePuzzlesData();
+            inventory.GeneratePiecesInPanel();
+        }
+
+       
+        
     }
 }
