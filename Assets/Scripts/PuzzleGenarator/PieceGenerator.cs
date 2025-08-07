@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 
 public class PieceGenerator : MonoBehaviour {
     private LoadGallery load;
@@ -26,7 +27,7 @@ public class PieceGenerator : MonoBehaviour {
             load.OnClickButton();
         }
         sourceImage = NativeGallery.LoadImageAtPath(imagePath);
-        sourceUV = new Material(Shader.Find("Unlit/Texture"));
+        sourceUV = new Material(Shader.Find("UI/Default"));
         sourceUV.mainTexture = sourceImage;
         sourceUV.SetFloat("_Mode", 0);
         if (sourceUV.mainTexture == null) {
@@ -39,7 +40,7 @@ public class PieceGenerator : MonoBehaviour {
     }
 
     public GameObject GeneratePieceMesh(int bottomType, int leftType, int topType, int rightType, Vector2 position) {
-        GameObject obj = new GameObject();
+        GameObject obj = new GameObject("Piece");
 
         Mesh mesh = new Mesh();
         List<Vector3> vertices = new List<Vector3>();
@@ -55,12 +56,18 @@ public class PieceGenerator : MonoBehaviour {
         mesh.uv = uv.ToArray();
         mesh.RecalculateNormals();
 
-        MeshRenderer meshRenderer = obj.AddComponent<MeshRenderer>();
+        /*MeshRenderer meshRenderer = obj.AddComponent<MeshRenderer>();
         MeshFilter meshFilter = obj.AddComponent<MeshFilter>();
 
         meshFilter.mesh = mesh;
-        meshRenderer.material = sourceUV;
+        meshRenderer.material = sourceUV;*/
 
+        UIMeshGraphic ui = obj.AddComponent<UIMeshGraphic>();
+        ui.material = sourceUV;
+        ui.SetMesh(mesh);
+        ui.SetTexture(sourceImage);
+        ui.material = sourceUV;
+        ui.material.mainTexture = sourceImage;
         return obj;
     }
 
