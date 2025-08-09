@@ -10,10 +10,6 @@ public class PieceInventory : MonoBehaviour
 
     private List<GameObject> pieces = new List<GameObject>();
 
-    private void Start() {
-        //GeneratePiecesInPanel();
-        //ShufflePieces();
-    }
 
     public void InitializePuzzleSize(int size) {
         puzzleSize = size;
@@ -35,7 +31,6 @@ public class PieceInventory : MonoBehaviour
     }
 
     public void ShufflePieces() {
-        // 조각 위치 셔플 (GridLayoutGroup에서 자식 순서 변경)
         for (int i = pieces.Count - 1; i > 0; i--) {
             int randomIndex = Random.Range(0, i + 1);
             pieces[i].transform.SetSiblingIndex(randomIndex);
