@@ -79,24 +79,21 @@ public class PuzzleGenerator : MonoBehaviour {
                 //int bottomType, int leftType, int topType, int rightType
                 if (i == 0 && j == 0) {
                     puzzleObject[i, j] = pieceGenerator.GeneratePieceMesh(verticalSide[i, j + 1], horizontalSide[i, j], verticalSide[i, j], horizontalSide[i + 1, j], new Vector2(i, j));
+                    puzzleObject[i, j].AddComponent<PuzzleDragAndDrop>().CorrectPos = new Vector2(i, j);
+                    
                 } else if (i != 0 && j == 0) {
                     puzzleObject[i, j] = pieceGenerator.GeneratePieceMesh(verticalSide[i, j + 1], (horizontalSide[i, j] == 0) ? 0 : 3 - horizontalSide[i, j], verticalSide[i, j], horizontalSide[i + 1, j], new Vector2(i, j));
+                    puzzleObject[i, j].AddComponent<PuzzleDragAndDrop>().CorrectPos = new Vector2(i, j);
                 } else if (i == 0 && j != 0) {
                     puzzleObject[i, j] = pieceGenerator.GeneratePieceMesh(verticalSide[i, j + 1], horizontalSide[i, j], (verticalSide[i, j] == 0) ? 0 : 3 - verticalSide[i, j], horizontalSide[i + 1, j], new Vector2(i, j));
+                    puzzleObject[i, j].AddComponent<PuzzleDragAndDrop>().CorrectPos = new Vector2(i, j);
                 } else {
                     puzzleObject[i, j] = pieceGenerator.GeneratePieceMesh(verticalSide[i, j + 1], (horizontalSide[i, j] == 0) ? 0 : 3 - horizontalSide[i, j], (verticalSide[i, j] == 0) ? 0 : 3 - verticalSide[i, j], horizontalSide[i + 1, j], new Vector2(i, j));
+                    puzzleObject[i, j].AddComponent<PuzzleDragAndDrop>().CorrectPos = new Vector2(i, j);
                 }
             }
         }
 
-        /*for (int i = 0; i < _puzzleSize; i++) {
-            for (int j = 0; j < _puzzleSize; j++) {
-                GameObject obj = puzzleObject[i, j];
-                obj.transform.position = new Vector3(i, -j, 0);
-                obj.transform.localScale = new Vector3(0.9f, 0.9f, 0);
-                obj.name = "piece" + i + ", " + j;
-            }
-        }*/
         return puzzleObject;
     }
 }

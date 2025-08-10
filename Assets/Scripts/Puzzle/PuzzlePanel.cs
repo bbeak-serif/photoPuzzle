@@ -25,8 +25,11 @@ public class PuzzlePanel : MonoBehaviour
         float cellSize = gridContainer.rect.width / gridSizeN;
         gridLayoutGroup.cellSize = new Vector2(cellSize, cellSize);
 
-        for (int i = 0; i < gridSizeN*gridSizeN; i++) {
-            Instantiate(pieceHolder, gridContainer);
+        for (int i = 0; i < gridSizeN; i++) {
+            for (int j = 0; j < gridSizeN; j++) {
+                GameObject obj = Instantiate(pieceHolder, gridContainer);
+                obj.AddComponent<PieceHolder>().CurrentPos = new Vector2(j, i); // what the fuck is happened??  only (j, i) is working???? why???
+            }
         }
     }
 }

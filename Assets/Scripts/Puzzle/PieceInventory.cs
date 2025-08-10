@@ -20,7 +20,6 @@ public class PieceInventory : MonoBehaviour
         for (int row = 0; row < puzzleSize; row++) {
             for (int col = 0; col < puzzleSize; col++) {
                 GameObject piece = pieceObjs[row,col];
-                Debug.Log(piece.name);
                 piece.transform.SetParent(gridLayout.transform);
                 piece.name = "Piece_" + row + "_" + col;
                 pieces.Add(piece);
