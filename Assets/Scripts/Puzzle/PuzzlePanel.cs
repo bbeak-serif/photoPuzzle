@@ -28,7 +28,7 @@ public class PuzzlePanel : MonoBehaviour
         for (int i = 0; i < gridSizeN; i++) {
             for (int j = 0; j < gridSizeN; j++) {
                 GameObject obj = Instantiate(pieceHolder, gridContainer);
-                obj.AddComponent<PieceHolder>().CurrentPos = new Vector2(j, i); // what the fuck is happened??  only (j, i) is working???? why???
+                obj.AddComponent<PieceHolder>().CurrentPos = new Vector2Int(j, i); // what the hell is happened??  only (j, i) is working???? why???
             }
         }
     }

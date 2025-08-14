@@ -870,52 +870,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &631702657
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 631702659}
-  - component: {fileID: 631702658}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &631702658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631702657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33d4fcf7248b0b141856ac3e9f6f1cb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  puzzleSize: 0
-  isNewGame: 0
---- !u!4 &631702659
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631702657}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 594, y: 312.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &699594420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,6 +1031,7 @@ GameObject:
   - component: {fileID: 773021938}
   - component: {fileID: 773021937}
   - component: {fileID: 773021936}
+  - component: {fileID: 773021939}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -1148,7 +1103,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 631702658}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OnStartGame
         m_Mode: 3
@@ -1198,6 +1153,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773021934}
   m_CullTransparentMesh: 1
+--- !u!114 &773021939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773021934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d850c9a87d1b84ea53ceec64e8042c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartGameButton
+  puzzleSize: 10
 --- !u!1 &799324213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1753,6 +1721,7 @@ GameObject:
   - component: {fileID: 988312022}
   - component: {fileID: 988312021}
   - component: {fileID: 988312020}
+  - component: {fileID: 988312023}
   m_Layer: 5
   m_Name: Button (4)
   m_TagString: Untagged
@@ -1824,7 +1793,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 631702658}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OnStartGame
         m_Mode: 3
@@ -1874,6 +1843,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988312018}
   m_CullTransparentMesh: 1
+--- !u!114 &988312023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988312018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d850c9a87d1b84ea53ceec64e8042c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartGameButton
+  puzzleSize: 15
 --- !u!1 &1006737740
 GameObject:
   m_ObjectHideFlags: 0
@@ -2441,6 +2423,7 @@ GameObject:
   - component: {fileID: 1760083576}
   - component: {fileID: 1760083575}
   - component: {fileID: 1760083574}
+  - component: {fileID: 1760083577}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -2512,7 +2495,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 631702658}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OnStartGame
         m_Mode: 3
@@ -2562,6 +2545,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760083572}
   m_CullTransparentMesh: 1
+--- !u!114 &1760083577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760083572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d850c9a87d1b84ea53ceec64e8042c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartGameButton
+  puzzleSize: 4
 --- !u!1 &1833771191
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,6 +2570,7 @@ GameObject:
   - component: {fileID: 1833771195}
   - component: {fileID: 1833771194}
   - component: {fileID: 1833771193}
+  - component: {fileID: 1833771196}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2645,7 +2642,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 631702658}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OnStartGame
         m_Mode: 3
@@ -2695,6 +2692,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833771191}
   m_CullTransparentMesh: 1
+--- !u!114 &1833771196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833771191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d850c9a87d1b84ea53ceec64e8042c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartGameButton
+  puzzleSize: 2
 --- !u!1 &1844971613
 GameObject:
   m_ObjectHideFlags: 0
@@ -2707,6 +2717,7 @@ GameObject:
   - component: {fileID: 1844971617}
   - component: {fileID: 1844971616}
   - component: {fileID: 1844971615}
+  - component: {fileID: 1844971618}
   m_Layer: 5
   m_Name: Button (5)
   m_TagString: Untagged
@@ -2778,7 +2789,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 631702658}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OnStartGame
         m_Mode: 3
@@ -2828,6 +2839,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844971613}
   m_CullTransparentMesh: 1
+--- !u!114 &1844971618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844971613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d850c9a87d1b84ea53ceec64e8042c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartGameButton
+  puzzleSize: 20
 --- !u!1 &1913895608
 GameObject:
   m_ObjectHideFlags: 0
@@ -3259,6 +3283,7 @@ GameObject:
   - component: {fileID: 2143177177}
   - component: {fileID: 2143177176}
   - component: {fileID: 2143177175}
+  - component: {fileID: 2143177178}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -3330,14 +3355,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 631702658}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OnStartGame
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 8
+          m_IntArgument: 64
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3380,6 +3405,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143177173}
   m_CullTransparentMesh: 1
+--- !u!114 &2143177178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143177173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d850c9a87d1b84ea53ceec64e8042c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StartGameButton
+  puzzleSize: 8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3387,4 +3425,3 @@ SceneRoots:
   - {fileID: 839438858}
   - {fileID: 867967748}
   - {fileID: 852593889}
-  - {fileID: 631702659}

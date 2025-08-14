@@ -3,22 +3,17 @@ using UnityEngine.SceneManagement;
 using System.IO;
 
 public class GameManager : MonoBehaviour {
-    private static GameManager instance;
-    public static GameManager Instance {
-        get {
-            if (instance == null) instance = new GameManager();
-            return instance;
-        }
-    }
+    public static GameManager Instance { get; private set; }
+
     public int puzzleSize;
     public bool isNewGame;
 
     private void Awake() {
-        if (instance == null) {
-            instance = this;
+        if (Instance == null) {
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else {
+        else if (Instance != this) {
             Destroy(gameObject);
         }
     }
@@ -27,7 +22,7 @@ public class GameManager : MonoBehaviour {
         if (!Directory.Exists(Application.persistentDataPath + "/SourceImage")) return;
         this.puzzleSize = puzzleSize;
         this.isNewGame = true;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }
 
